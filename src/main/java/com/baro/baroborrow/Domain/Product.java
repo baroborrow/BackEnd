@@ -9,8 +9,8 @@ import com.baro.baroborrow.Enum.CategoryId;
 @Setter
 public class Product {
     private String product_id;
-    private String user_id;
-    private String user_id2;
+    private String user_id; //빌린사람
+    private String user_id2;    //빌려준사람
     private CategoryId category;
     private Timestamp borrow_date;
     private Timestamp return_date;
