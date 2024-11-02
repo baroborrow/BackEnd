@@ -36,4 +36,12 @@ public class User {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public User(String kakao_id, String user_id, String username){
+        this.kakao_id = kakao_id;
+        this.user_id = user_id;
+        this.username = username;
+        this.created_at = new Date();
+        this.point = 0;
+    }
 }

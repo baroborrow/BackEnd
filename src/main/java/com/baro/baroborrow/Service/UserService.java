@@ -73,4 +73,19 @@ public class UserService {
             }
         }
     }
+
+    public void updateUserLocation(String user_id, String newAddress, double newLatitude, double newLongitude) throws Exception {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference collectionRef = firestore.collection("User");
+        Query query = collectionRef.whereEqualTo("user_id", user_id);
+        ApiFuture<QuerySnapshot> querySnapshot = query.get();
+
+        for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
+            if (document.exists()) {
+                collectionRef.document(document.getId()).update("address", newAddress,
+                        "latitude", newLatitude,
+                        "longitude", newLongitude);
+            }
+        }
+    }
 }

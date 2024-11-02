@@ -1,6 +1,7 @@
 package com.baro.baroborrow.Controller;
 
 import com.baro.baroborrow.DTO.ProductAddDTO;
+import com.baro.baroborrow.DTO.ProductReturnDTO;
 import com.baro.baroborrow.Domain.Product;
 import com.baro.baroborrow.Service.ProductService;
 import com.google.cloud.firestore.DocumentReference;
@@ -32,14 +33,14 @@ public class ProductController {
     }
 
     @GetMapping("/product/{user_id}")
-    public ResponseEntity<List<Product>> getProduct(@PathVariable String user_id) throws Exception {
-        List<Product> products = productService.getProduct(user_id);
+    public ResponseEntity<List<ProductReturnDTO>> getProduct(@PathVariable String user_id) throws Exception {
+        List<ProductReturnDTO> products = productService.getProduct(user_id);
         return ResponseEntity.ok(products);
     }
 
     @GetMapping("/product2/{user_id}")
-    public ResponseEntity<List<Product>> getProduct2(@PathVariable String user_id) throws Exception {
-        List<Product> products = productService.getProduct2(user_id);
+    public ResponseEntity<List<ProductReturnDTO>> getProduct2(@PathVariable String user_id) throws Exception {
+        List<ProductReturnDTO> products = productService.getProduct2(user_id);
         return ResponseEntity.ok(products);
     }
 }

@@ -1,10 +1,7 @@
 package com.baro.baroborrow.Controller;
 
 
-import com.baro.baroborrow.DTO.KakaoLoginDTO;
-import com.baro.baroborrow.DTO.LoginCheckDTO;
-import com.baro.baroborrow.DTO.LoginCheckSendDTO;
-import com.baro.baroborrow.DTO.RegisterDTO;
+import com.baro.baroborrow.DTO.*;
 import com.baro.baroborrow.Domain.User;
 import com.baro.baroborrow.Service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -63,7 +60,9 @@ public class UserController {
                 }
             }
         }
-        return new LoginCheckSendDTO(false,null);
+        User user = new User(kakaoLoginDTO.getKakao_id(), kakaoLoginDTO.getMail_address(), kakaoLoginDTO.getName());
+        userService.addUser(user);
+        return new LoginCheckSendDTO(true,user.getUser_id());
     }
 
     @DeleteMapping("/delete-user/{user_id}")
@@ -75,6 +74,11 @@ public class UserController {
     public ResponseEntity<User> findUser(@PathVariable String id) throws Exception{
         User user = userService.getUser(id);
         return ResponseEntity.ok(user);
+    }
+
+    @PatchMapping("/update-address")
+    public void updateAddress(@RequestBody UpdateAddrDTO updateAddrDTO) throws Exception{
+        userService.updateUserLocation(updateAddrDTO.getUser_id(),updateAddrDTO.getAddress(),updateAddrDTO.getLatitude(), updateAddrDTO.getLongitude());
     }
 
 }

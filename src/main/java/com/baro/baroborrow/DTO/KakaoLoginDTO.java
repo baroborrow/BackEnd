@@ -7,4 +7,6 @@ import lombok.Setter;
 @Setter
 public class KakaoLoginDTO {
     private String kakao_id;
+    private String mail_address;
+    private String name;
 }
