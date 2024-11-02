@@ -71,4 +71,10 @@ public class UserController {
         userService.deleteUser(user_id);
     }
 
+    @GetMapping("/find-user/{id}")
+    public ResponseEntity<User> findUser(@PathVariable String id) throws Exception{
+        User user = userService.getUser(id);
+        return ResponseEntity.ok(user);
+    }
+
 }
