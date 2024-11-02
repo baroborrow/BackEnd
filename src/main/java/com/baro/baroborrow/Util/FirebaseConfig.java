@@ -1,4 +1,4 @@
-package com.baro.baroborrow.util;
+package com.baro.baroborrow.Util;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

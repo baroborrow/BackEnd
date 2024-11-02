@@ -1,4 +1,4 @@
-package com.baro.baroborrow.util;
+package com.baro.baroborrow.Util;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
