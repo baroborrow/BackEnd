@@ -48,7 +48,7 @@ public class UserController {
 
             //카카오 비교
         }
-        User user = new User(registerDTO.getMail_address(),registerDTO.getKakao_id(),registerDTO.getPassword(), registerDTO.getUsername());
+        User user = new User(registerDTO.getMail_address(),registerDTO.getKakao_id(),registerDTO.getPassword(), registerDTO.getUsername(),registerDTO.getLatitude(),registerDTO.getLongitude());
         userService.addUser(user);
         return new LoginCheckSendDTO(true,user.getUser_id());
     }
@@ -57,7 +57,7 @@ public class UserController {
     public LoginCheckSendDTO kakaoLogin(@RequestBody KakaoLoginDTO kakaoLoginDTO) throws Exception{
         List<User> list = userService.getUsers();
         for(User user : list){
-            if(user.getUser_id() != null){
+            if(user.getKakao_id() != null){
                 if(user.getKakao_id().equals(kakaoLoginDTO.getKakao_id())){
                     return new LoginCheckSendDTO(true,user.getUser_id());
                 }

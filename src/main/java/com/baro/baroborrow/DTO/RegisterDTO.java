@@ -10,4 +10,6 @@ public class RegisterDTO {
     private String password;
     private String mail_address;
     private String kakao_id;
+    private double latitude;
+    private double longitude;
 }

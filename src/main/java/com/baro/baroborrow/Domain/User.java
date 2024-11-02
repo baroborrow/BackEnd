@@ -18,11 +18,13 @@ public class User {
     private Date created_at;
     private Date updated_at;
     private int point;
+    private double latitude;
+    private double longitude;
 
     public User() {
     }
 
-    public User (String user_id, String kakao_id, String password, String username) {
+    public User (String user_id, String kakao_id, String password, String username,double latitude, double longitude) {
         this.user_id = user_id;
         if(kakao_id != null) {
             this.kakao_id = kakao_id;
@@ -31,5 +33,7 @@ public class User {
         this.username = username;
         this.created_at = new Date();
         this.point = 0;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }

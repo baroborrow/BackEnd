@@ -1,10 +1,7 @@
 package com.baro.baroborrow.Service;
 
 import com.baro.baroborrow.Domain.Board;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.Query;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +34,23 @@ public class BoardService {
             boards.add(document.toObject(Board.class));
         }
         return boards;
+    }
+
+    public void addBoard(Board board) throws Exception {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference collectionRef = firestore.collection("Board");
+        DocumentReference docRef = collectionRef.add(board).get();
+
+        String boardId = docRef.getId();
+        board.setBoard_id(boardId);
+
+        docRef.set(board);
+    }
+
+    public void increaseView(String board_id) throws Exception {
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference docRef = firestore.collection("Board").document(board_id);
+
+        docRef.update("views", FieldValue.increment(1));
     }
 }
