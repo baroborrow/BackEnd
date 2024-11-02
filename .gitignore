@@ -36,4 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 
+
 firebase-config.json
+/src/main/resources/firebase-config.json
