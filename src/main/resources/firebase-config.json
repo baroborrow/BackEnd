@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "baroborrow-2139b",
-  "private_key_id": "d462512a194e545ce6f7817f11482de91040fac3",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCBtRNb2qDxm+gT\nDTP0Z82NHlS7uYP/8sRvjualZv7VyWEKSeETsSomBsohKCdcIFbpm45SXsLdDhSD\nMOa/Yo58WA7mZRIs1aBWGY0VhkKEzMQenfv1YMAnb7EthKosdQbN/aiGKlAxlmZ4\n/m990qezlEaI7fPlc4hT3x8+MeXiJ+NBzA2D0EVn5V9EOn69zGNj3NtjA6n8orlf\nwsj6r5f9MIOONht7I0eGOMbS+3OVVqAI0VKKFafvuE5ZlBzD/BEloDqVtnJOeXqK\n9v7KVPMs8gi+U8auDXWvi4qZ4YrzuTQWa0kmieb68UWy+eyU+VFPsG03d/5HqTpD\n006ljCpnAgMBAAECggEAMOSQ548CHBEo6gWQEBEQ6qEET78egtyAL40uZCru5KeE\nbNxse3/M44irqNP6AkAuguCgRWxzB+DG2q0UThBYpYaMF00CDOR6C/qVtAdoC6ck\nRmZHE7fktvjjUMUxYJC8f+meHPTWRdrrxbAjVsqRbJ/39qW7ykJCoVr56/fjL9xP\n7NVH6YEl2aKXc+aLrU3pHZ5oTln3hUhwx2CQz1XiDgjIzfuXu0km03PCHeFv/fHU\nHmGMgxNRtBpIEm7Hh0LquBN98cYc+fWIi897uHlhRjic3aMCI1p8PhUptD/cM05e\nd5tjWT95PR9EgTY0uoDly3KNBi79mHY6Y5MtYengAQKBgQC21MUP96yh4r7sEtd8\n6KXp366d6gaC38jaEnBAu9Kv8AsvrikNtINbFISyoLFcgJ0rEhGiXz90SP0BOMiC\nKf16f/o2hq2etNv8dKBhx4qQCt2ecRvl/r3x0wdsF/xT/2qxZHMyJ/SNSV12wtPG\nss5lKyhUJoUJWjkSp8/gSxh7oQKBgQC1nbgvTQpHDlkCNraTiJ2e3kyvvppF9bjQ\njCXYqT05QRh9a/F4pclaPbKHaaF9jb3phXJPnzt1O3+m3JRJyvbGc0NM9SCMorVX\nm2UgPpe3XYAnv/SQXsPpvdP0oKK5E7Mid6uKgt1y7lbGpJj87DktrDzmvMMqkgp8\n5X1JU5QpBwKBgDA8DglaZFcJRSlvBx7TGgKLmrvapAEfHRQ7TRYm9zynbawUnIwb\nFZSP4zplHqWy4MQeLjzSOCFrqCQMYQnGHjOVU+PSwDdgq7D869sgE7RQyYsleCDD\nhkUoUYr5AP8AIZvPTnzrAZ/MvTW5zLldLwqNykP5LZv8C5aaY0NfTIRBAoGAHwER\n1GFeg8rbPxmACaek4N4qUUZEp/TO3CtQurAJl6CZQbAPxPzoZtNpitxpiTmNVjRF\n03nneJfzrtSxK/fOMQq0Tor6R4fvVUld9ic5V0BLBH4sjgjfgSO672QM43ONfTDY\nxAibLWeqwLaQt3zMNhPVQb6vwrCzwaabwMzX2jkCgYA0TXHqEp0XykwL9Gl/AdLI\nmmksvFyG1lmOAZcwL2hgkA/WZ/Cz7ZmlmYHdlFzNKVfjETWzrCtkQMj/25e1gd1S\n7cDRm2CKAzwN12BK+GnZyWDmuRtp3/j8IYpeJ9Ph6gAM5xnEh6OU+Nqk2OIh+BWQ\nDd9Rwz2yQxZjr824MrVXBA==\n-----END PRIVATE KEY-----\n",
+  "private_key_id": "${{ secrets.private_key_id }}",
+  "private_key": "${{ secrets.private_key }}",
   "client_email": "firebase-adminsdk-zs8cn@baroborrow-2139b.iam.gserviceaccount.com",
   "client_id": "110821639523117439800",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
