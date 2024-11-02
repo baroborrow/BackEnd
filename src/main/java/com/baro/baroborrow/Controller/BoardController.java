@@ -1,6 +1,8 @@
 package com.baro.baroborrow.Controller;
 
 import com.baro.baroborrow.DTO.BoardAddDTO;
+import com.baro.baroborrow.DTO.FindBoardDTO;
+import com.baro.baroborrow.DTO.FindBoardViewDTO;
 import com.baro.baroborrow.Domain.Board;
 import com.baro.baroborrow.Enum.CategoryId;
 import com.baro.baroborrow.Service.BoardService;
@@ -22,9 +24,15 @@ public class BoardController {
         return ResponseEntity.ok(boards);
     }
 
-    @GetMapping("/find-board/{category}")
-    public ResponseEntity<List<Board>> getBoard(@PathVariable String category) throws Exception {
-        List<Board> boards = boardService.getBoardsByCategory(category);
+    @PostMapping("/find-board-category")
+    public ResponseEntity<List<Board>> getBoard(@RequestBody FindBoardDTO findBoardDTO) throws Exception {
+        List<Board> boards = boardService.getBoardsByCategory(findBoardDTO.getUser_id(),findBoardDTO.getCategory());
+        return ResponseEntity.ok(boards);
+    }
+
+    @PostMapping("/find-board-view")
+    public ResponseEntity<List<Board>> getBoardView(@RequestBody FindBoardViewDTO findBoardViewDTO) throws Exception {
+        List<Board> boards = boardService.getBoardsMostViewed(findBoardViewDTO.getUser_id());
         return ResponseEntity.ok(boards);
     }
 
