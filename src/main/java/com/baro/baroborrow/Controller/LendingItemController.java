@@ -1,5 +1,6 @@
 package com.baro.baroborrow.Controller;
 
+import com.baro.baroborrow.DTO.LendingItemServerDto;
 import com.baro.baroborrow.Service.LendingItemService;
 import com.baro.baroborrow.domain.Item.LendingItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class LendingItemController {
 
 
     @PostMapping
-    public ResponseEntity<String> addLendingItem(@RequestBody LendingItem item) {
+    public ResponseEntity<String> addLendingItem(@RequestBody LendingItemServerDto item) {
         lendingItemService.addLendingItem(item);
         return ResponseEntity.status(HttpStatus.CREATED).body("빌려주기 상품 등록 성공");
     }
