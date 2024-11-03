@@ -88,4 +88,21 @@ public class UserService {
             }
         }
     }
+    public void updateUserPoints(String userId, int points) throws Exception {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference collectionRef = firestore.collection("Users");
+
+        DocumentReference docRef = collectionRef.document(userId);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+
+        if (document.exists()) {
+            int currentPoints = document.getLong("points").intValue();
+            int updatedPoints = currentPoints + points;
+            docRef.update("points", updatedPoints);
+        } else {
+            throw new Exception("User not found");
+        }
+    }
+
 }

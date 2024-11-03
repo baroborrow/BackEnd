@@ -43,4 +43,15 @@ public class ProductController {
         List<ProductReturnDTO> products = productService.getProduct2(user_id);
         return ResponseEntity.ok(products);
     }
+
+    @PostMapping("/reserve-transaction")
+    public ResponseEntity<String> reserveTransaction(@RequestParam String productId, @RequestParam String buyerId, @RequestParam String sellerId) {
+        try {
+            productService.reserveTransaction(productId, buyerId, sellerId);
+            return ResponseEntity.ok("거래 예약이 완료되었습니다. 판매자 포인트가 증가하고 구매자 포인트가 감소했습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("거래 예약 중 오류가 발생했습니다: " + e.getMessage());
+        }
+    }
+
 }

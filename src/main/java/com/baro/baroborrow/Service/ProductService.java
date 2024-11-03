@@ -83,4 +83,21 @@ public class ProductService {
             updateFuture.get();
         }
     }
+    public void reserveTransaction(String productId, String buyerId, String sellerId) throws Exception {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference collectionRef = firestore.collection("Product");
+
+        ApiFuture<QuerySnapshot> query = collectionRef.whereEqualTo("product_id", productId).get();
+        QuerySnapshot querySnapshot = query.get();
+
+        if (!querySnapshot.isEmpty()) {
+            DocumentReference docRef = querySnapshot.getDocuments().get(0).getReference();
+            docRef.update("reserved", true);
+        }
+
+        UserService userService = new UserService();
+        userService.updateUserPoints(sellerId, 20); // 판매자
+        userService.updateUserPoints(buyerId, -20); // 구매자
+    }
+
 }
