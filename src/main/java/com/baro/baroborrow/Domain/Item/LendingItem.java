@@ -1,31 +1,35 @@
 package com.baro.baroborrow.domain.Item;
 
+import com.baro.baroborrow.DTO.LendingItemServerDto;
 import lombok.Data;
+import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
+@Getter
 public class LendingItem {
     private String productName;
     private String startDate;
     private String endDate;
     private Double price;
     private String category;
-    private String imageUrl;
+    private String image;
     private String chatLink;
     private String description;
     private String precautions;
 
     public LendingItem() {}
 
-    public LendingItem(String productName, String startDate, String endDate, Double price, String category, String imageUrl, String chatLink, String description, String precautions) {
-        this.productName = productName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.price = price;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.chatLink = chatLink;
-        this.description = description;
-        this.precautions = precautions;
+    public LendingItem(LendingItemServerDto item, String image) {
+        this.productName = item.getProductName();
+        this.startDate = item.getStartDate();
+        this.endDate = item.getEndDate();
+        this.price = item.getPrice();
+        this.category = item.getCategory();
+        this.image = image;
+        this.chatLink = item.getChatLink();
+        this.description = item.getDescription();
+        this.precautions = item.getPrecautions();
     }
 
 

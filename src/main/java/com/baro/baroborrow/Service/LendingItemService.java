@@ -1,12 +1,13 @@
 package com.baro.baroborrow.Service;
 
+import com.baro.baroborrow.DTO.LendingItemServerDto;
 import com.baro.baroborrow.domain.Item.LendingItem;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -25,10 +26,26 @@ public class LendingItemService {
         return list;
     }
 
-    public void addLendingItem(LendingItem item) {
+    public ResponseEntity<String> addLendingItem(LendingItemServerDto item) {
+        Map<String, Object> inquiryData = new HashMap<>();
+        LendingItem newitem = null;
+        if (item.getImage() != null && !item.getImage().isEmpty()) {
+            try {
+                // 이미지 파일을 Base64로 인코딩
+                byte[] imageBytes = item.getImage().getBytes();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                //서버에 저장할 엔티티 생성
+                newitem = new LendingItem(item, base64Image);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResponseEntity.status(500).body("Failed to process image");
+            }
+        }
+
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference collectionRef = firestore.collection("LendingItems");
-        collectionRef.document().set(item);
+        collectionRef.document().set(newitem);
+        return null;
     }
 
     public void deleteLendingItem(String itemId) {
